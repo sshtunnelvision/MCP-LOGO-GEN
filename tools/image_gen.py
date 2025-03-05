@@ -2,43 +2,34 @@
 from typing import Optional
 import fal_client
 import asyncio
+import os
 
 async def generate_image(prompt: str, model: str = "fal-ai/recraft-v3") -> str:
     """
     Generate an image using FAL AI based on a text prompt.
-
-    Args:
-        prompt: The text description for the image.
-        model: The FAL AI model to use (default: recraft-v3).
-
-    Returns:
-        URL of the generated image or an error message.
     """
+    fal_key = os.getenv("FAL_KEY")
+    print(f"FAL_KEY in environment: {fal_key[:4] if fal_key else 'Not set'}...")
+
     def on_queue_update(update):
         if isinstance(update, fal_client.InProgress):
             for log in update.logs:
                 print(log["message"])
 
     try:
-        # Run synchronous fal_client.subscribe in an executor
         loop = asyncio.get_event_loop()
         result = await loop.run_in_executor(
             None,
             lambda: fal_client.subscribe(
                 model,
-                arguments={
-                    "prompt": prompt,
-                    "image_size": "square_hd",  # Adding default image size
-                    "style": "realistic_image"   # Adding default style
-                },
+                arguments={"prompt": prompt},
                 with_logs=True,
                 on_queue_update=on_queue_update,
             )
         )
-        
-        # Extract the image URL from the result according to the API response structure
-        if "images" in result and len(result["images"]) > 0:
+        print(f"Raw FAL response: {result}")
+        if result and isinstance(result, dict) and "images" in result and len(result["images"]) > 0:
             return result["images"][0]["url"]
-        return "Image generation completed, but no image URL in response."
+        return "Image generation completed, but no URL returned."
     except Exception as e:
         return f"Error generating image: {str(e)}"
