@@ -1,0 +1,35 @@
+---
+description: Creating Logos
+globs: 
+alwaysApply: false
+---
+Logo Generation and Background Removal Process
+
+1. Generate Logo Image
+   - Use generate_image
+   - The response will contain a URL to the generated image
+   - pass the url to the remove_background tool
+
+2. Remove Background
+   - use remove_background
+   - Input: URL from the generated image
+   - The response will contain a new URL with the background-removed version
+
+3. Download Final Image
+   - Take the URL from the background removal step
+   - Download to a local directory (e.g., 'downloads')
+   - The final image will have a transparent background
+
+   4. Create Scaled Versions
+   - Take the downloaded image
+   - Create 32x32 and 128x128 versions
+   - Save alongside the original in the downloads directory
+   - All versions maintain transparency
+
+
+Notes:
+- All steps require a valid FAL AI API key
+- The process is sequential - each step depends on the previous step's output
+- Final image format will be PNG to preserve transparency
+- Original generated images are typically webp format
+- Background-removed images are automatically converted to PNG 

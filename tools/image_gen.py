@@ -4,7 +4,7 @@ import fal_client
 import asyncio
 import os
 
-async def generate_image(prompt: str, model: str = "fal-ai/recraft-v3") -> str:
+async def generate_image(prompt: str, model: str = "fal-ai/ideogram/v2", aspect_ratio: str = "1:1", expand_prompt: bool = True, style: str = "auto", negative_prompt: str = "") -> str:
     """
     Generate an image using FAL AI based on a text prompt.
     """
@@ -22,7 +22,13 @@ async def generate_image(prompt: str, model: str = "fal-ai/recraft-v3") -> str:
             None,
             lambda: fal_client.subscribe(
                 model,
-                arguments={"prompt": prompt},
+                arguments={
+                    "prompt": prompt,
+                    "aspect_ratio": aspect_ratio,
+                    "expand_prompt": expand_prompt,
+                    "style": style,
+                    "negative_prompt": negative_prompt
+                },
                 with_logs=True,
                 on_queue_update=on_queue_update,
             )
