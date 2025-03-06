@@ -2,6 +2,10 @@
 
 This server provides logo generation capabilities using FAL AI, with tools for image generation, background removal, and automatic scaling.
 
+## Demo
+
+[![MCP Tool Server Demo](https://img.youtube.com/vi/Miemu1xEZng/0.jpg)](https://www.youtube.com/watch?v=Miemu1xEZng)
+
 ## Installation
 
 1. Install `uv` (Universal Virtualenv):
