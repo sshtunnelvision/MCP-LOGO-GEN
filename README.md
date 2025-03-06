@@ -25,6 +25,24 @@ source .venv/bin/activate  # On Unix/macOS
 uv pip install -r requirements.txt
 ```
 
+4. Set up your environment variables:
+   - Create a `.env` file in the root directory
+   - Add your FAL AI API key:
+
+```bash
+FAL_KEY=your_fal_ai_key_here
+```
+
+## Running the Server
+
+Start the server with:
+
+```bash
+python run_server.py
+```
+
+The server will be available at `http://127.0.0.1:7777`
+
 ## Cursor IDE Configuration
 
 1. Open Cursor Settings
