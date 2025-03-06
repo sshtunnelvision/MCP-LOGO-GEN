@@ -5,8 +5,7 @@ This server provides logo generation capabilities using FAL AI, with tools for i
 ## Installation
 
 ## Demo
-
-https://github.com/sshtunnelvision/mcp-logo-gen/raw/main/public/mcp-logo-gen-demo.mp4
+(https://github.com/sshtunnelvision/MCP-LOGO-GEN/blob/master/public/mcp-logo-gen-demo.mp4)
 
 1. Install `uv` (Universal Virtualenv):
 
