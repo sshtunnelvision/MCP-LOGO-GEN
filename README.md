@@ -80,3 +80,7 @@ The server will be available at `http://127.0.0.1:7777`
 - [Cursor MCP Documentation](https://docs.cursor.com/context/model-context-protocol)
 - [Model Context Protocol Introduction](https://modelcontextprotocol.io/introduction)
 - [FAL AI Dashboard](https://fal.ai/dashboard)
+
+---
+
+If you find this tool helpful, you can [buy me a coffee](https://buymeacoffee.com/sshtunnelvision) ☕️ to support development!
