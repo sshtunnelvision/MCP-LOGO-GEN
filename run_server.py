@@ -46,9 +46,13 @@ def run_server():
     """Run the server process and handle its lifecycle."""
     global restart_server, shutting_down
     
+    # Get the path to server.py in the same directory as this script
+    current_dir = os.path.dirname(os.path.abspath(__file__)) if __file__ else "."
+    server_path = os.path.join(current_dir, "server.py")
+    
     # Start the server as a subprocess
     server_process = subprocess.Popen(
-        [sys.executable, "server.py"],
+        [sys.executable, server_path],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         universal_newlines=True,
@@ -90,8 +94,17 @@ def main():
     
     print("Starting MCP Tool Server with clean shutdown handling and auto-reload...")
     
+    # Get the current directory (where this script is located)
+    current_dir = os.path.dirname(os.path.abspath(__file__)) if __file__ else "."
+    
+    # Create downloads directory if it doesn't exist
+    downloads_dir = os.path.join(current_dir, "downloads")
+    if not os.path.exists(downloads_dir):
+        os.makedirs(downloads_dir)
+        print(f"Created downloads directory at: {downloads_dir}")
+    
     # Start file watcher
-    observer = start_file_watcher("mcp_tool_server")
+    observer = start_file_watcher(current_dir)
     
     # Function to handle Ctrl+C
     def signal_handler(sig, frame):

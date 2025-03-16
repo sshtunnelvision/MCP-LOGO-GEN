@@ -47,6 +47,16 @@ python run_server.py
 
 The server will be available at `http://127.0.0.1:7777`
 
+### Troubleshooting
+
+If you encounter a `FileNotFoundError` on Windows when running the server, make sure you're running the command from the root directory of the project. If the issue persists, try updating to the latest version of the repository which includes fixes for Windows compatibility.
+
+For Windows users specifically:
+
+1. Make sure you've activated your virtual environment with `.venv\Scripts\activate`
+2. Run the server from the root directory of the project with `python run_server.py`
+3. If you see any path-related errors, please report them in the issues section of the repository
+
 ## Cursor IDE Configuration
 
 1. Open Cursor Settings
